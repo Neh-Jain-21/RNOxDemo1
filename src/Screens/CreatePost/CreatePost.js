@@ -12,6 +12,7 @@ import { faCloudArrowUp, faClose } from "@fortawesome/free-solid-svg-icons";
 // REDUX
 import { addPost } from "@src/Redux/posts/reducer";
 // HELPERS
+import COLORS from "@src/Helpers/Colors";
 import { UPLOAD_TYPES } from "@src/Helpers/Constants";
 
 const CreatePost = (props) => {
@@ -52,6 +53,8 @@ const CreatePost = (props) => {
 		}
 	};
 
+	const handleDeleteMedia = (filterIndex) => () => setMediaData((prev) => prev.filter((_, index) => index !== filterIndex));
+
 	const handleCancelUpload = () => navigation.goBack();
 
 	const handleUpload = () => {
@@ -72,7 +75,7 @@ const CreatePost = (props) => {
 				<TextInput
 					style={styles.descriptionInput}
 					placeholder="Enter Description"
-					placeholderTextColor="grey"
+					placeholderTextColor={COLORS.LIGHT_SECONDARY}
 					multiline
 					numberOfLines={5}
 					textAlignVertical="top"
@@ -88,13 +91,19 @@ const CreatePost = (props) => {
 							horizontal
 							data={mediaData}
 							showsHorizontalScrollIndicator={false}
-							renderItem={({ item }) =>
-								item.type === UPLOAD_TYPES.IMAGE ? (
-									<Image style={styles.postImages} source={{ uri: item.uri }} />
-								) : (
-									<Video muted style={styles.postImages} resizeMode="cover" playWhenInactive source={{ uri: item.uri }} />
-								)
-							}
+							renderItem={({ item, index }) => (
+								<View>
+									<TouchableOpacity activeOpacity={0.8} style={styles.postImagesIconContainer} onPress={handleDeleteMedia(index)}>
+										<FontAwesomeIcon icon={faClose} size={20} color={COLORS.DARK} />
+									</TouchableOpacity>
+
+									{item.type === UPLOAD_TYPES.IMAGE ? (
+										<Image style={styles.postImages} source={{ uri: item.uri }} />
+									) : (
+										<Video muted style={styles.postImages} resizeMode="cover" playWhenInactive source={{ uri: item.uri }} />
+									)}
+								</View>
+							)}
 						/>
 					</>
 				)}
@@ -102,7 +111,7 @@ const CreatePost = (props) => {
 				{mediaData.length < 4 && (
 					<View style={styles.imagePickerContainer}>
 						<TouchableOpacity activeOpacity={0.8} style={styles.imagePickerView} onPress={handleUploadMedia}>
-							<FontAwesomeIcon style={styles.cloudUploadIcon} icon={faCloudArrowUp} size={50} color="white" />
+							<FontAwesomeIcon style={styles.cloudUploadIcon} icon={faCloudArrowUp} size={50} color={COLORS.LIGHT} />
 							<Text style={styles.imagePickerTextBlue}>Click here to upload</Text>
 						</TouchableOpacity>
 					</View>
@@ -137,6 +146,8 @@ const TagUserModal = (props) => {
 	const [searchedUser, setSearchedUser] = useState("");
 
 	const handelCloseModal = () => {
+		setSearchedUser("");
+
 		props.setDescriptionValue((prev) => prev.slice(0, prev.length - 1));
 		props.setTagUserModalOpen(false);
 	};
@@ -154,16 +165,16 @@ const TagUserModal = (props) => {
 		<Modal visible={props.tagUserModalOpen} transparent animationType="slide">
 			<View style={styles.tagUserModalContainer}>
 				<TouchableOpacity activeOpacity={0.8} style={styles.tagUserCloseBtn} onPress={handelCloseModal}>
-					<FontAwesomeIcon style={styles.cloudUploadIcon} icon={faClose} size={20} color="black" />
+					<FontAwesomeIcon style={styles.cloudUploadIcon} icon={faClose} size={20} color={COLORS.DARK} />
 				</TouchableOpacity>
 
-				<TextInput style={styles.tagUserSearch} autoFocus placeholder="Search User" placeholderTextColor="grey" value={searchedUser} onChangeText={setSearchedUser} />
+				<TextInput style={styles.tagUserSearch} autoFocus placeholder="Search User" placeholderTextColor={COLORS.LIGHT_SECONDARY} value={searchedUser} onChangeText={setSearchedUser} />
 
 				<FlatList
 					data={searchedUser !== "" ? usersIFollow.filter((user) => user.name.includes(searchedUser)) : usersIFollow}
 					renderItem={({ item }) => (
 						<TouchableOpacity activeOpacity={0.8} style={styles.tagUserView} onPress={handlePressUser(item)}>
-							<Text style={{ color: "black" }}>{item.name}</Text>
+							<Text style={{ color: COLORS.DARK }}>{item.name}</Text>
 						</TouchableOpacity>
 					)}
 				/>

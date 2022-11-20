@@ -9,6 +9,7 @@ import { faHeart as HeartRegularIcon } from "@fortawesome/free-regular-svg-icons
 // REDUX
 import { likeOrUnlikePost } from "@src/Redux/posts/reducer";
 // HELPERS
+import COLORS from "@src/Helpers/Colors";
 import { UPLOAD_TYPES } from "@src/Helpers/Constants";
 
 const PostCard = ({ item, setImageOrVideoModal, dispatch, userId }) => {
@@ -26,7 +27,11 @@ const PostCard = ({ item, setImageOrVideoModal, dispatch, userId }) => {
 			<Text style={styles.commentText}>{item.comment}</Text>
 
 			<TouchableOpacity activeOpacity={0.8} style={styles.likesContainer} onPress={handleLikeOrUnlike}>
-				{item.likes.includes(userId) ? <FontAwesomeIcon icon={HeartSolidIcon} color="red" size={20} /> : <FontAwesomeIcon icon={HeartRegularIcon} color="red" size={20} />}
+				{item.likes.includes(userId) ? (
+					<FontAwesomeIcon icon={HeartSolidIcon} color={COLORS.SECONDARY} size={20} />
+				) : (
+					<FontAwesomeIcon icon={HeartRegularIcon} color={COLORS.SECONDARY} size={20} />
+				)}
 
 				<Text style={styles.likesText}>{item.likes.length}</Text>
 			</TouchableOpacity>

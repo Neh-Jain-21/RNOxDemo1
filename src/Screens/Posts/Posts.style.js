@@ -1,4 +1,6 @@
 const { StyleSheet } = require("react-native");
+// HELPERS
+import COLORS from "@src/Helpers/Colors";
 
 const styles = StyleSheet.create({
 	postsList: {
@@ -18,8 +20,8 @@ const styles = StyleSheet.create({
 		display: "flex",
 		borderRadius: 25,
 		alignItems: "center",
-		backgroundColor: "#4285F4",
 		justifyContent: "center",
+		backgroundColor: COLORS.PRIMARY,
 	},
 
 	imageOrVideoModal: {
@@ -53,8 +55,8 @@ const styles = StyleSheet.create({
 		display: "flex",
 		borderRadius: 25,
 		alignItems: "center",
-		backgroundColor: "white",
 		justifyContent: "center",
+		backgroundColor: COLORS.LIGHT,
 	},
 });
 

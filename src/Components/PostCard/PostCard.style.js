@@ -1,4 +1,6 @@
 const { StyleSheet } = require("react-native");
+// HELPERS
+import COLORS from "@src/Helpers/Colors";
 
 const styles = StyleSheet.create({
 	card: {
@@ -7,7 +9,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		borderRadius: 5,
 		marginHorizontal: 10,
-		backgroundColor: "white",
+		backgroundColor: COLORS.LIGHT,
 	},
 	postImages: {
 		margin: 5,
@@ -16,7 +18,7 @@ const styles = StyleSheet.create({
 	},
 	commentText: {
 		marginTop: 10,
-		color: "black",
+		color: COLORS.DARK,
 	},
 	likesContainer: {
 		marginTop: 10,
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
 	},
 	likesText: {
 		marginLeft: 6,
-		color: "black",
+		color: COLORS.DARK,
 		fontWeight: "bold",
 	},
 });

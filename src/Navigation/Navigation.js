@@ -4,13 +4,15 @@ import { createStackNavigator } from "@react-navigation/stack";
 // STACK
 import HomeScreenStack from "@src/Navigation/HomeScreenStack/HomeScreenStack";
 import CreatePostStack from "@src/Navigation/CreatePostStack/CreatePostStack";
+// HELPERS
+import COLORS from "@src/Helpers/Colors";
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
 	return (
 		<NavigationContainer>
-			<StatusBar barStyle="dark-content" backgroundColor="#fff" translucent />
+			<StatusBar barStyle="dark-content" backgroundColor={COLORS.LIGHT} translucent />
 
 			<Stack.Navigator>
 				{HomeScreenStack({ Stack })}

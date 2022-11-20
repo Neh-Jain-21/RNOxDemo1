@@ -1,4 +1,6 @@
 const { StyleSheet } = require("react-native");
+// HELPERS
+import COLORS from "@src/Helpers/Colors";
 
 const styles = StyleSheet.create({
 	userContainer: {
@@ -9,7 +11,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 	userText: {
-		color: "black",
+		color: COLORS.DARK,
 		fontWeight: "bold",
 	},
 	btn: {
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 	},
 	btnText: {
-		color: "white",
+		color: COLORS.LIGHT,
 	},
 });
 

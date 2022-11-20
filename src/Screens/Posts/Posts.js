@@ -10,6 +10,7 @@ import styles from "@src/Screens/Posts/Posts.style";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 // HELPERS
+import COLORS from "@src/Helpers/Colors";
 import { UPLOAD_TYPES } from "@src/Helpers/Constants";
 
 const Posts = ({ navigation }) => {
@@ -33,7 +34,7 @@ const Posts = ({ navigation }) => {
 
 			<View style={styles.addPostBtnContainer}>
 				<TouchableOpacity activeOpacity={0.8} style={styles.addPostBtn} onPress={navigateToCreatePost}>
-					<FontAwesomeIcon icon={faPlus} size={20} color="white" />
+					<FontAwesomeIcon icon={faPlus} size={20} color={COLORS.LIGHT} />
 				</TouchableOpacity>
 			</View>
 
@@ -56,7 +57,7 @@ const ImageOrVideoModal = (props) => {
 
 				<View style={styles.closeImageOrVideoModalBtnContainer}>
 					<TouchableOpacity activeOpacity={0.8} style={styles.closeImageOrVideoModalBtn} onPress={handleCloseModal}>
-						<FontAwesomeIcon icon={faPlus} size={30} color="grey" transform={{ rotate: 45 }} />
+						<FontAwesomeIcon icon={faPlus} size={30} color={COLORS.LIGHT_SECONDARY} transform={{ rotate: 45 }} />
 					</TouchableOpacity>
 				</View>
 			</View>

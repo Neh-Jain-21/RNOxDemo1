@@ -1,38 +1,52 @@
 const { StyleSheet } = require("react-native");
+// HELPERS
+import COLORS from "@src/Helpers/Colors";
 
 const styles = StyleSheet.create({
 	createPostContainer: {
 		padding: 10,
 	},
 	requiredSign: {
-		color: "red",
+		color: COLORS.SECONDARY,
 	},
 	descriptionText: {
 		fontSize: 14,
-		color: "black",
+		color: COLORS.DARK,
 		marginBottom: 10,
 		textAlign: "center",
 	},
 	descriptionInput: {
 		padding: 10,
 		borderWidth: 1,
-		color: "black",
+		color: COLORS.DARK,
 		borderRadius: 10,
-		borderColor: "grey",
-		backgroundColor: "#fff",
+		borderColor: COLORS.LIGHT_SECONDARY,
+		backgroundColor: COLORS.LIGHT,
 	},
 	errorMessage: {
-		color: "red",
+		color: COLORS.SECONDARY,
 	},
 	mediaText: {
 		fontSize: 14,
 		marginTop: 20,
-		color: "black",
+		color: COLORS.DARK,
 		marginBottom: 10,
 		textAlign: "center",
 	},
+	postImagesIconContainer: {
+		top: 0,
+		right: 0,
+		zIndex: 10,
+		padding: 2,
+		display: "flex",
+		borderRadius: 20,
+		position: "absolute",
+		alignItems: "center",
+		justifyContent: "center",
+		backgroundColor: COLORS.LIGHT,
+	},
 	postImages: {
-		margin: 5,
+		margin: 8,
 		width: 100,
 		height: 100,
 	},
@@ -56,7 +70,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	imagePickerTextBlue: {
-		color: "#4285F4",
+		color: COLORS.PRIMARY,
 	},
 	footerBtnContainer: {
 		marginTop: 40,
@@ -72,7 +86,7 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		alignItems: "center",
 		flexDirection: "row",
-		backgroundColor: "red",
+		backgroundColor: COLORS.SECONDARY,
 		justifyContent: "center",
 	},
 	postBtn: {
@@ -84,24 +98,24 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		flexDirection: "row",
 		justifyContent: "center",
-		backgroundColor: "#4285F4",
+		backgroundColor: COLORS.PRIMARY,
 	},
 	btnText: {
-		color: "white",
+		color: COLORS.LIGHT,
 	},
 
 	tagUserModalContainer: {
 		height: 200,
 		marginTop: "auto",
-		backgroundColor: "white",
+		backgroundColor: COLORS.LIGHT,
 		borderTopWidth: 1,
-		borderTopColor: "grey",
+		borderTopColor: COLORS.LIGHT_SECONDARY,
 	},
 	tagUserView: {
 		height: 40,
 		padding: 10,
 		borderBottomWidth: 0.5,
-		borderBottomColor: "grey",
+		borderBottomColor: COLORS.LIGHT_SECONDARY,
 	},
 	tagUserCloseBtn: {
 		height: 20,
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
 		justifyContent: "flex-end",
 	},
 	tagUserSearch: {
-		color: "black",
+		color: COLORS.DARK,
 	},
 });
 
