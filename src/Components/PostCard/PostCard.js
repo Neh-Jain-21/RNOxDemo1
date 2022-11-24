@@ -12,35 +12,35 @@ import { likeOrUnlikePost } from "@src/Redux/posts/reducer";
 import COLORS from "@src/Helpers/Colors";
 import { UPLOAD_TYPES } from "@src/Helpers/Constants";
 
-const PostCard = ({ item, setImageOrVideoModal, dispatch, userId }) => {
-	const handleLikeOrUnlike = () => dispatch(likeOrUnlikePost({ id: item.id, userId }));
+const PostCard = ({ post, setImageOrVideoModal, dispatch, userId }) => {
+	const handleLikeOrUnlike = () => dispatch(likeOrUnlikePost({ id: post.id, userId }));
 
 	return (
 		<View style={styles.card}>
 			<FlatList
-				data={item.images}
+				data={post.images}
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				renderItem={({ item }) => <ImageOrVideoComponent item={item} setImageOrVideoModal={setImageOrVideoModal} />}
+				renderItem={({ item, index }) => <ImageOrVideoComponent index={index} item={item} images={post.images} setImageOrVideoModal={setImageOrVideoModal} />}
 			/>
 
-			<Text style={styles.commentText}>{item.comment}</Text>
+			<Text style={styles.commentText}>{post.comment}</Text>
 
 			<TouchableOpacity activeOpacity={0.8} style={styles.likesContainer} onPress={handleLikeOrUnlike}>
-				{item.likes.includes(userId) ? (
+				{post.likes.includes(userId) ? (
 					<FontAwesomeIcon icon={HeartSolidIcon} color={COLORS.SECONDARY} size={20} />
 				) : (
 					<FontAwesomeIcon icon={HeartRegularIcon} color={COLORS.SECONDARY} size={20} />
 				)}
 
-				<Text style={styles.likesText}>{item.likes.length}</Text>
+				<Text style={styles.likesText}>{post.likes.length}</Text>
 			</TouchableOpacity>
 		</View>
 	);
 };
 
-const ImageOrVideoComponent = ({ item, setImageOrVideoModal }) => {
-	const handlePressImageOrVideo = () => setImageOrVideoModal({ visible: true, data: item });
+const ImageOrVideoComponent = ({ index, item, images, setImageOrVideoModal }) => {
+	const handlePressImageOrVideo = () => setImageOrVideoModal({ visible: true, data: { images, clickedImage: images[index] } });
 
 	return (
 		<TouchableOpacity activeOpacity={0.8} onPress={handlePressImageOrVideo}>

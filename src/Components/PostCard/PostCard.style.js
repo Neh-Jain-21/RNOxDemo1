@@ -1,35 +1,36 @@
 const { StyleSheet } = require("react-native");
 // HELPERS
 import COLORS from "@src/Helpers/Colors";
+import { PADDING, MARGIN, BORDER_RADIUS, HORIZONTAL_DIMENSIONS, VERTICAL_DIMENSIONS } from "@src/Helpers/Dimensions";
 
 const styles = StyleSheet.create({
 	card: {
-		padding: 10,
 		elevation: 2,
-		marginBottom: 10,
-		borderRadius: 5,
-		marginHorizontal: 10,
+		padding: PADDING._10,
+		marginBottom: MARGIN._10,
+		marginHorizontal: MARGIN._10,
 		backgroundColor: COLORS.LIGHT,
+		borderRadius: BORDER_RADIUS._5,
 	},
 	postImages: {
-		margin: 5,
-		width: 100,
-		height: 100,
+		margin: MARGIN._5,
+		height: VERTICAL_DIMENSIONS._100,
+		width: HORIZONTAL_DIMENSIONS._100,
 	},
 	commentText: {
-		marginTop: 10,
 		color: COLORS.DARK,
+		marginTop: MARGIN._10,
 	},
 	likesContainer: {
-		marginTop: 10,
 		display: "flex",
 		flexDirection: "row",
 		alignItems: "center",
+		marginTop: MARGIN._10,
 	},
 	likesText: {
-		marginLeft: 6,
 		color: COLORS.DARK,
 		fontWeight: "bold",
+		marginLeft: MARGIN._6,
 	},
 });
 

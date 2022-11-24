@@ -1,13 +1,14 @@
 const { StyleSheet } = require("react-native");
 // HELPERS
 import COLORS from "@src/Helpers/Colors";
+import { PADDING, BORDER_RADIUS } from "@src/Helpers/Dimensions";
 
 const styles = StyleSheet.create({
 	userContainer: {
-		padding: 15,
 		display: "flex",
 		flexDirection: "row",
 		alignItems: "center",
+		padding: PADDING._15,
 		justifyContent: "space-between",
 	},
 	userText: {
@@ -15,9 +16,9 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 	},
 	btn: {
-		borderRadius: 5,
-		paddingVertical: 5,
-		paddingHorizontal: 20,
+		paddingVertical: PADDING._5,
+		paddingHorizontal: PADDING._15,
+		borderRadius: BORDER_RADIUS._5,
 	},
 	btnText: {
 		color: COLORS.LIGHT,

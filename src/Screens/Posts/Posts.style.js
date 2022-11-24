@@ -1,27 +1,28 @@
 const { StyleSheet } = require("react-native");
 // HELPERS
 import COLORS from "@src/Helpers/Colors";
+import { MARGIN, PADDING, HORIZONTAL_DIMENSIONS, VERTICAL_DIMENSIONS, BORDER_RADIUS } from "@src/Helpers/Dimensions";
 
 const styles = StyleSheet.create({
 	postsList: {
-		marginTop: 10,
+		marginTop: MARGIN._10,
 	},
 	addPostBtnContainer: {
-		padding: 10,
 		width: "100%",
 		display: "flex",
 		flexDirection: "row",
+		padding: PADDING._10,
 		justifyContent: "center",
 	},
 	addPostBtn: {
-		width: 50,
-		height: 50,
 		elevation: 4,
 		display: "flex",
-		borderRadius: 25,
 		alignItems: "center",
 		justifyContent: "center",
+		borderRadius: BORDER_RADIUS._25,
+		height: VERTICAL_DIMENSIONS._50,
 		backgroundColor: COLORS.PRIMARY,
+		width: HORIZONTAL_DIMENSIONS._50,
 	},
 
 	imageOrVideoModal: {
@@ -41,22 +42,22 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	closeImageOrVideoModalBtnContainer: {
-		padding: 10,
 		width: "100%",
 		display: "flex",
 		marginTop: "auto",
 		flexDirection: "row",
+		padding: PADDING._10,
 		justifyContent: "center",
 	},
 	closeImageOrVideoModalBtn: {
-		width: 50,
-		height: 50,
 		elevation: 4,
 		display: "flex",
-		borderRadius: 25,
 		alignItems: "center",
 		justifyContent: "center",
 		backgroundColor: COLORS.LIGHT,
+		borderRadius: BORDER_RADIUS._25,
+		height: VERTICAL_DIMENSIONS._50,
+		width: HORIZONTAL_DIMENSIONS._50,
 	},
 });
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { FlatList, View, TouchableOpacity, Modal, Image } from "react-native";
+import { FlatList, View, TouchableOpacity, Modal } from "react-native";
 import Video from "react-native-video";
 import { useSelector, useDispatch } from "react-redux";
+import ImageViewer from "react-native-image-zoom-viewer";
 // COMPONENTS
 import PostCard from "@src/Components/PostCard/PostCard";
 // STYLES
@@ -29,7 +30,7 @@ const Posts = ({ navigation }) => {
 				style={styles.postsList}
 				showsVerticalScrollIndicator={false}
 				data={posts}
-				renderItem={({ item }) => <PostCard item={item} setImageOrVideoModal={setImageOrVideoModal} dispatch={dispatch} userId={userId} />}
+				renderItem={({ item }) => <PostCard post={item} setImageOrVideoModal={setImageOrVideoModal} dispatch={dispatch} userId={userId} />}
 			/>
 
 			<View style={styles.addPostBtnContainer}>
@@ -46,21 +47,29 @@ const Posts = ({ navigation }) => {
 const ImageOrVideoModal = (props) => {
 	const handleCloseModal = () => props.setImageOrVideoModal({ visible: false, data: null });
 
-	return (
-		<Modal animationType="fade" visible={props.imageOrVideoModal.visible} transparent statusBarTranslucent>
-			<View style={styles.imageOrVideoModal}>
-				<View style={styles.imageOrVideoContainer}>
-					{props.imageOrVideoModal?.data?.type === UPLOAD_TYPES.IMAGE
-						? props.imageOrVideoModal?.data?.uri && <Image style={{ width: "90%", resizeMode: "contain", minHeight: 300 }} source={{ uri: props.imageOrVideoModal.data.uri }} />
-						: props.imageOrVideoModal?.data?.uri && <Video style={{ width: "90%", minHeight: 300 }} controls source={{ uri: props.imageOrVideoModal.data.uri }} />}
-				</View>
+	const imagesUrls = props?.imageOrVideoModal?.data?.images
+		?.map((image) => image.type === UPLOAD_TYPES.IMAGE && { url: image.uri, width: "90%", resizeMode: "contain", minHeight: 300 })
+		.filter((image) => image);
 
-				<View style={styles.closeImageOrVideoModalBtnContainer}>
-					<TouchableOpacity activeOpacity={0.8} style={styles.closeImageOrVideoModalBtn} onPress={handleCloseModal}>
-						<FontAwesomeIcon icon={faPlus} size={30} color={COLORS.LIGHT_SECONDARY} transform={{ rotate: 45 }} />
-					</TouchableOpacity>
+	const currentImageIndex = imagesUrls?.findIndex((image) => image.url === props?.imageOrVideoModal?.data?.clickedImage?.uri);
+
+	return (
+		<Modal visible={props.imageOrVideoModal.visible} statusBarTranslucent transparent={true}>
+			{props?.imageOrVideoModal?.data?.clickedImage?.type === UPLOAD_TYPES.IMAGE ? (
+				<ImageViewer enableSwipeDown onCancel={handleCloseModal} onSwipeDown={handleCloseModal} index={currentImageIndex === -1 ? 0 : currentImageIndex} imageUrls={imagesUrls} />
+			) : (
+				<View style={styles.imageOrVideoModal}>
+					<View style={styles.imageOrVideoContainer}>
+						<Video style={{ width: "90%", minHeight: 300 }} controls source={{ uri: props?.imageOrVideoModal?.data?.clickedImage?.uri }} />
+					</View>
+
+					<View style={styles.closeImageOrVideoModalBtnContainer}>
+						<TouchableOpacity activeOpacity={0.8} style={styles.closeImageOrVideoModalBtn} onPress={handleCloseModal}>
+							<FontAwesomeIcon icon={faPlus} size={30} color={COLORS.LIGHT_SECONDARY} transform={{ rotate: 45 }} />
+						</TouchableOpacity>
+					</View>
 				</View>
-			</View>
+			)}
 		</Modal>
 	);
 };
