@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "913046194562",
+    "project_id": "rnoxdemo1",
+    "storage_bucket": "rnoxdemo1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913046194562:android:6f877c8541b874143fe79b",
+        "android_client_info": {
+          "package_name": "com.oxdemo1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913046194562-braaeemdmclnitkjqfjg15sfmej4ml3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oxdemo1",
+            "certificate_hash": "cac75477dcd10d9bd81e242d0cd329f8d3734fb0"
+          }
+        },
+        {
+          "client_id": "913046194562-pnlmrq2sqal46371et5magpvd8jkbda3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjlunkWHCBdNSWRhNjLgMQWQxlDw2td7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913046194562-pnlmrq2sqal46371et5magpvd8jkbda3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

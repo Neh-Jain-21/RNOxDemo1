@@ -1,5 +1,6 @@
-import { Dimensions } from "react-native";
+import { Dimensions, StatusBar } from "react-native";
 
+export const _STATUS_BAR_HEIGHT = StatusBar.currentHeight;
 export const _DEVICE_WIDTH = Dimensions.get("window").width;
 export const _DEVICE_HEIGHT = Dimensions.get("window").height;
 
@@ -9,6 +10,7 @@ const _iPHONE_8_HEIGHT = 732;
 
 /** MARGIN CONSTANTS */
 export const MARGIN = {
+	_2: (_DEVICE_WIDTH * 2) / _iPHONE_8_WIDTH,
 	_5: (_DEVICE_WIDTH * 5) / _iPHONE_8_WIDTH,
 	_6: (_DEVICE_WIDTH * 6) / _iPHONE_8_WIDTH,
 	_8: (_DEVICE_WIDTH * 8) / _iPHONE_8_WIDTH,

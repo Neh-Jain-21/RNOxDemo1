@@ -1,4 +1,4 @@
-const { StyleSheet } = require("react-native");
+import { StyleSheet } from "react-native";
 // HELPERS
 import COLORS from "@src/Helpers/Colors";
 import { PADDING, MARGIN, BORDER_RADIUS, HORIZONTAL_DIMENSIONS, VERTICAL_DIMENSIONS } from "@src/Helpers/Dimensions";

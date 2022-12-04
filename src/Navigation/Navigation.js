@@ -2,6 +2,7 @@ import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 // STACK
+import AuthStack from "@src/Navigation/AuthStack/AuthStack";
 import HomeScreenStack from "@src/Navigation/HomeScreenStack/HomeScreenStack";
 import CreatePostStack from "@src/Navigation/CreatePostStack/CreatePostStack";
 // HELPERS
@@ -15,6 +16,7 @@ const Navigation = () => {
 			<StatusBar barStyle="dark-content" backgroundColor={COLORS.LIGHT} translucent />
 
 			<Stack.Navigator>
+				{AuthStack({ Stack })}
 				{HomeScreenStack({ Stack })}
 				{CreatePostStack({ Stack })}
 			</Stack.Navigator>
